@@ -1,26 +1,39 @@
-#Note: For Binary search the input array must be in sorted and space complexity is O(log n)
-def binary_search(arr,tar,low,high):
-	if low<=high:
-		mid=(low+high)//2
-		if arr[mid]==tar:
-			return mid
-		elif arr[mid]<tar:
-			return binary_search(arr,tar,mid+1,high)
+# Iterative Binary Search Function
+# It returns index of x in given array arr if present,
+# else returns -1
+def binary_search(arr, x):
+	low = 0
+	high = len(arr) - 1
+	mid = 0
+
+	while low <= high:
+
+		mid = (high + low) // 2
+
+		# If x is greater, ignore left half
+		if arr[mid] < x:
+			low = mid + 1
+
+		# If x is smaller, ignore right half
+		elif arr[mid] > x:
+			high = mid - 1
+
+		# means x is present at mid
 		else:
-			return binary_search(arr,tar,low,mid-1)
-	else:
-		return -1
+			return mid
 
-arr=input("Enter your array:").split(",")
+	# If we reach here, then the element was not present
+	return -1
 
-tar=int(input("Enter your target:"))
 
-arr=[int(x.strip()) for x in arr]
+# Test array
+arr = [ 2, 3, 4, 10, 40 ]
+x = 10
 
-result=binary_search(arr,tar,0,len(arr)-1)
+# Function call
+result = binary_search(arr, x)
 
-if result!=-1:
-	print(f"{tar} is found at index:{result}")
+if result != -1:
+	print("Element is present at index", str(result))
 else:
-	print(f"{tar} is not found in array.")
-		
+	print("Element is not present in array")
