@@ -1,9 +1,9 @@
 # Python Program to print Strong Numbers from 1 to N
 import math
 
-maximum = int(input(" Please Enter the Maximum Value: "))
+max = int(input("  "))
 
-for Number in range(1, maximum):
+for Number in range(1, max):
     Temp = Number
     Sum = 0
     while(Temp > 0):
